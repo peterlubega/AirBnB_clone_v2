@@ -20,16 +20,16 @@ from models.engine.file_storage import FileStorage
 
 
 class TestConsole(unittest.TestCase):
-    """this will test the console"""
+    """This will test the console"""
 
     @classmethod
     def setUpClass(cls):
-        """setup for the test"""
+        """Setup for the test"""
         cls.consol = HBNBCommand()
 
     @classmethod
     def teardown(cls):
-        """at the end of the test this will tear it down"""
+        """At the end of the test this will tear it down"""
         del cls.consol
 
     def tearDown(self):
@@ -45,8 +45,8 @@ class TestConsole(unittest.TestCase):
         p = style.check_files(["console.py"])
         self.assertEqual(p.total_errors, 0, 'fix Pep8')
 
-    def test_docstrings_in_console(self):
-        """checking for docstrings"""
+    def tes_docstrings_in_console(self):
+        """Checking for docstrings"""
         self.assertIsNotNone(console.__doc__)
         self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
@@ -67,7 +67,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual('', f.getvalue())
 
     def test_quit(self):
-        """test quit command inpout"""
+        """Test quit command inpout"""
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("quit")
             self.assertEqual('', f.getvalue())
