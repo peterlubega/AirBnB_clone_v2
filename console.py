@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
             NameError: when there is no object taht has the name
         """
         try:
-            if not line: # Check if no arguments were provided
+            if not line:  # Check if no arguments were provided
                 raise SyntaxError()
             my_list = line.split(" ")  # Split command line into a list
 
@@ -49,9 +49,9 @@ class HBNBCommand(cmd.Cmd):
             else:  # Raise SyntaxError if the class name is missing
                 raise SyntaxError()
 
-            kwargs = {} # Initialize an empty dictionary for keyword arguments
-	    
-            # Iterate through the list starting from index 1 to extract key-value pairs
+            kwargs = {}  # Initialize an empty dictionary for keyword arguments
+
+            # Iterate through list from index 1 to extract key-value pairs
             for pair in my_list[1:]:
                 k, v = pair.split("=")
                 if self.is_int(v):
@@ -59,8 +59,8 @@ class HBNBCommand(cmd.Cmd):
                 elif self.is_float(v):
                     kwargs[k] = float(v)
                 else:
-                    v = v.replace('_', ' ') # Replace underscores with spaces
-                    kwargs[k] = v.strip('"\'') # Strip leading and trailing quotes and spaces
+                    v = v.replace('_', ' ')  # Replace underscores with spaces
+                    kwargs[k] = v.strip('"\'')  # Strip quotes and spaces
 
             obj = self.all_classes[cls_name](**kwargs)
             storage.new(obj)  # store new object
@@ -287,6 +287,7 @@ class HBNBCommand(cmd.Cmd):
             return True
         except ValueError:
             return False
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
